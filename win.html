@@ -3,9 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>抽選結果発表</title>
+<title>当選おめでとうございます</title>
 <meta name="robots" content="noindex,nofollow">
 <style>
+:root{
+  --bg1:#0b1020;
+  --bg2:#081326;
+  --green:#22c55e;
+  --green2:#16a34a;
+}
 body{
   margin:0;
   font-family:system-ui,-apple-system,"Hiragino Sans","Noto Sans JP";
@@ -13,85 +19,68 @@ body{
   display:grid;
   place-items:center;
   padding:24px;
-  overflow:hidden;
-  background:
-    radial-gradient(900px 500px at 50% 20%, rgba(255,215,0,.25), transparent 60%),
-    radial-gradient(900px 500px at 80% 80%, rgba(59,130,246,.25), transparent 60%),
-    linear-gradient(180deg,#060b1f,#0d1f35);
+  background:linear-gradient(180deg,var(--bg1),var(--bg2));
   color:white;
 }
 .card{
-  width:min(760px,95%);
-  padding:60px 24px;
-  border-radius:22px;
+  width:min(720px,95%);
+  padding:50px 24px;
+  border-radius:20px;
   background:rgba(255,255,255,.06);
   text-align:center;
-  box-shadow:0 40px 100px rgba(0,0,0,.6);
-  backdrop-filter:blur(12px);
+  box-shadow:0 30px 90px rgba(0,0,0,.6);
 }
-h1{font-size:32px;margin-bottom:10px;}
-.sub{color:#cbd5e1;margin-bottom:30px;line-height:1.8;}
-.count{
-  font-size:80px;
-  font-weight:900;
-  color:#ffd700;
-  margin:20px 0;
-  text-shadow:0 0 50px rgba(255,215,0,.9);
-}
-.btn{
+h1{font-size:28px;margin-bottom:10px;}
+.badge{
   display:inline-block;
-  padding:18px 40px;
+  margin:12px 0;
+  padding:6px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.1);
+  font-size:13px;
+}
+.amount{
+  font-size:48px;
+  font-weight:900;
+  color:var(--green);
+  margin:20px 0;
+}
+.cta{
+  display:inline-flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:18px 34px;
   border-radius:16px;
-  background:linear-gradient(180deg,#60a5fa,#3b82f6);
-  color:white;
+  background:linear-gradient(180deg,var(--green),var(--green2));
+  color:#06210f;
   font-weight:900;
   text-decoration:none;
-  font-size:18px;
-  box-shadow:0 20px 60px rgba(59,130,246,.5);
+  box-shadow:0 25px 60px rgba(34,197,94,.35);
+  min-width:260px;
+  text-align:center;
 }
-.loading{
-  margin-top:20px;
-  font-size:14px;
-  opacity:.7;
-  display:none;
-}
+.cta-main{font-size:18px;}
+.cta-sub{font-size:13px;margin-top:4px;opacity:.85;}
 </style>
 </head>
 <body>
 
 <div class="card">
-  <h1>抽選結果の発表</h1>
-  <p class="sub">エントリー情報を確認しました。</p>
+  <h1>🎉 当選おめでとうございます 🎉</h1>
 
-  <div class="count" id="count">3</div>
+  <div class="badge">【20歳以上限定】</div>
 
-  <a class="btn" onclick="goWin()">結果を見る</a>
+  <div class="amount">350,000円</div>
 
-  <div class="loading" id="loading">
-    結果を確認中です...
-  </div>
+  <p>下のボタンからお受け取りください。</p>
+
+  <a class="cta" href="https://lin.ee/MkmzU3y" target="_blank">
+    <span class="cta-main">ここから受け取り</span>
+    <span class="cta-sub">（公式LINEへ移動します。）</span>
+  </a>
+
 </div>
-
-<script>
-let c=3;
-let el=document.getElementById("count");
-
-let timer=setInterval(()=>{
-  c--;
-  el.textContent=c;
-  if(c<=0){
-    clearInterval(timer);
-    el.textContent="🎉";
-  }
-},1000);
-
-function goWin(){
-  document.getElementById("loading").style.display="block";
-  setTimeout(()=>{
-    window.location.href="win.html";
-  },1500);
-}
-</script>
 
 </body>
 </html>
